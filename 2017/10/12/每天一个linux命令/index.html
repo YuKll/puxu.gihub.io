@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="摘要：insmode">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-12T12:29:54.969Z">
+<meta property="og:updated_time" content="2017-10-12T12:31:47.178Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="每天一个linux命令之insmod">
 <meta name="twitter:description" content="摘要：insmode">
@@ -102,9 +102,14 @@
 -m：输出模块的载入信息； -o&lt;模块名称&gt;：指定模块的名称，可使用模块文件的文件名；
 -p：测试模块是否能正确地载入kernel；
 -s：将所有信息记录在系统记录文件中； 
--v：执行时显示详细的信息； 
+-v：执行时显详细的信息； 
 -x：不要汇出模块的外部符号； 
--X：汇出模块所有的外部符号，此为预设置。 参数 内核模块：指定要加载的内核模块文件。 实例 加载RAID1阵列级别模块，如下所示： [root@localhost boot]# insmod /lib/modules/2.6. 18-8.el5/kernel/drivers/md/raid1.ko [root@localhost boot]# lsmod | grep raid1 raid1 25153 0 从以上显示结果可知，RAID1模块已加载成功。只是在使用insmod命令加载模块时，需要使用绝对路径方能加载，且加载时无法自动解决依赖关系。
+-X：汇出模块所有的外部符号，此为预设置。
+参数 内核模块：指定要加载的内核模块文件。 
+实例 加载RAID1阵列级别模块，如下所示：
+[root@localhost boot]# insmod /lib/modules/2.6. 18-8.el5/kernel/drivers/md/raid1.ko
+[root@localhost boot]# lsmod | grep raid1 raid1 25153 0 
+从以上显示结果可知，RAID1模块已加载成功。只是在使用insmod命令加载模块时，需要使用绝对路径方能加载，且加载时无法自动解决依赖关系。
 </code></pre>
       
     </div>
