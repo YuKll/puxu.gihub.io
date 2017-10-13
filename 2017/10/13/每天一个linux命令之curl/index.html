@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>每天一个linux命令之curl | Xu的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="摘要：curl">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一个linux命令之curl">
+<meta property="og:url" content="https://yukll.github.io/puxu.github.io/2017/10/13/每天一个linux命令之curl/index.html">
+<meta property="og:site_name" content="Xu的博客">
+<meta property="og:description" content="摘要：curl">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-13T03:29:35.649Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一个linux命令之curl">
+<meta name="twitter:description" content="摘要：curl">
+  
+    <link rel="alternate" href="/atom.xml" title="Xu的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/puxu.github.io/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/puxu.github.io/" id="logo">Xu的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/puxu.github.io/" id="subtitle">fly the sky</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/puxu.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/puxu.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yukll.github.io/puxu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-每天一个linux命令之curl" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/puxu.github.io/2017/10/13/每天一个linux命令之curl/" class="article-date">
+  <time datetime="2017-10-13T03:28:44.000Z" itemprop="datePublished">2017-10-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/puxu.github.io/categories/日志/">日志</a>►<a class="article-category-link" href="/puxu.github.io/categories/日志/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每天一个linux命令之curl
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要：curl<br><a id="more"></a><br>正文:      Linux curl命令详解</p>
+<p>命令：curl</p>
+<p>在Linux中curl是一个利用URL规则在命令行下工作的文件传输工具，可以说是一款很强大的http命令行工具。它支持文件的上传和下载，是综合传输工具，但按传统，习惯称url为下载工具。</p>
+<p>语法：# curl [option] [url]<br>常见参数：</p>
+<p>复制代码<br>-A/–user-agent <string>              设置用户代理发送给服务器<br>-b/–cookie <name=string file="">    cookie字符串或文件读取位置<br>-c/–cookie-jar <file>                    操作结束后把cookie写入到这个文件中<br>-C/–continue-at <offset>            断点续转<br>-D/–dump-header <file>              把header信息写入到该文件中<br>-e/–referer                                  来源网址<br>-f/–fail                                          连接失败时不显示http错误<br>-o/–output                                  把输出写到该文件中<br>-O/–remote-name                      把输出写到该文件中，保留远程文件的文件名<br>-r/–range <range>                      检索来自HTTP/1.1或FTP服务器字节范围<br>-s/–silent                                    静音模式。不输出任何东西<br>-T/–upload-file <file>                  上传文件<br>-u/–user <user[:password]>      设置服务器的用户和密码<br>-w/–write-out [format]                什么输出完成后<br>-x/–proxy <host[:port]>              在给定的端口上使用HTTP代理<br>-#/–progress-bar                        进度条显示当前的传送状态<br>复制代码<br>例子：<br>1、基本用法</host[:port]></user[:password]></file></range></file></offset></file></name=string></string></p>
+<h1 id="curl-http-www-linux-com"><a href="#curl-http-www-linux-com" class="headerlink" title="curl http://www.linux.com"></a>curl <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a></h1><p>执行后，www.linux.com 的html就会显示在屏幕上了<br>Ps：由于安装linux的时候很多时候是没有安装桌面的，也意味着没有浏览器，因此这个方法也经常用于测试一台服务器是否可以到达一个网站</p>
+<p>2、保存访问的网页<br>2.1:使用linux的重定向功能保存</p>
+<h1 id="curl-http-www-linux-com-gt-gt-linux-html"><a href="#curl-http-www-linux-com-gt-gt-linux-html" class="headerlink" title="curl http://www.linux.com &gt;&gt; linux.html"></a>curl <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a> &gt;&gt; linux.html</h1><p>2.2:可以使用curl的内置option:-o(小写)保存网页</p>
+<p>$ curl -o linux.html <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a><br>执行完成后会显示如下界面，显示100%则表示保存成功</p>
+<p>% Total    % Received % Xferd  Average Speed  Time    Time    Time  Current<br>                                Dload  Upload  Total  Spent    Left  Speed<br>100 79684    0 79684    0    0  3437k      0 –:–:– –:–:– –:–:– 7781k<br>2.3:可以使用curl的内置option:-O(大写)保存网页中的文件<br>要注意这里后面的url要具体到某个文件，不然抓不下来</p>
+<h1 id="curl-O-http-www-linux-com-hello-sh"><a href="#curl-O-http-www-linux-com-hello-sh" class="headerlink" title="curl -O http://www.linux.com/hello.sh"></a>curl -O <a href="http://www.linux.com/hello.sh" target="_blank" rel="external">http://www.linux.com/hello.sh</a></h1><p>3、测试网页返回值</p>
+<h1 id="curl-o-dev-null-s-w-http-code-www-linux-com"><a href="#curl-o-dev-null-s-w-http-code-www-linux-com" class="headerlink" title="curl -o /dev/null -s -w %{http_code} www.linux.com"></a>curl -o /dev/null -s -w %{http_code} www.linux.com</h1><p>Ps:在脚本中，这是很常见的测试网站是否正常的用法</p>
+<p>4、指定proxy服务器以及其端口<br>很多时候上网需要用到代理服务器(比如是使用代理服务器上网或者因为使用curl别人网站而被别人屏蔽IP地址的时候)，幸运的是curl通过使用内置option：-x来支持设置代理</p>
+<h1 id="curl-x-192-168-100-100-1080-http-www-linux-com"><a href="#curl-x-192-168-100-100-1080-http-www-linux-com" class="headerlink" title="curl -x 192.168.100.100:1080 http://www.linux.com"></a>curl -x 192.168.100.100:1080 <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a></h1><p>5、cookie<br>有些网站是使用cookie来记录session信息。对于chrome这样的浏览器，可以轻易处理cookie信息，但在curl中只要增加相关参数也是可以很容易的处理cookie<br>5.1:保存http的response里面的cookie信息。内置option:-c（小写）</p>
+<h1 id="curl-c-cookiec-txt-http-www-linux-com"><a href="#curl-c-cookiec-txt-http-www-linux-com" class="headerlink" title="curl -c cookiec.txt  http://www.linux.com"></a>curl -c cookiec.txt  <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a></h1><p>执行后cookie信息就被存到了cookiec.txt里面了</p>
+<p>5.2:保存http的response里面的header信息。内置option: -D</p>
+<h1 id="curl-D-cookied-txt-http-www-linux-com"><a href="#curl-D-cookied-txt-http-www-linux-com" class="headerlink" title="curl -D cookied.txt http://www.linux.com"></a>curl -D cookied.txt <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a></h1><p>执行后cookie信息就被存到了cookied.txt里面了</p>
+<p>注意：-c(小写)产生的cookie和-D里面的cookie是不一样的。</p>
+<p>5.3:使用cookie<br>很多网站都是通过监视你的cookie信息来判断你是否按规矩访问他们的网站的，因此我们需要使用保存的cookie信息。内置option: -b</p>
+<h1 id="curl-b-cookiec-txt-http-www-linux-com"><a href="#curl-b-cookiec-txt-http-www-linux-com" class="headerlink" title="curl -b cookiec.txt http://www.linux.com"></a>curl -b cookiec.txt <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a></h1><p>6、模仿浏览器<br>有些网站需要使用特定的浏览器去访问他们，有些还需要使用某些特定的版本。curl内置option:-A可以让我们指定浏览器去访问网站</p>
+<h1 id="curl-A-“Mozilla-4-0-compatible-MSIE-8-0-Windows-NT-5-0-”-http-www-linux-com"><a href="#curl-A-“Mozilla-4-0-compatible-MSIE-8-0-Windows-NT-5-0-”-http-www-linux-com" class="headerlink" title="curl -A “Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)” http://www.linux.com"></a>curl -A “Mozilla/4.0 (compatible; MSIE 8.0; Windows NT 5.0)” <a href="http://www.linux.com" target="_blank" rel="external">http://www.linux.com</a></h1><p>这样服务器端就会认为是使用IE8.0去访问的</p>
+<p>7、伪造referer（盗链）<br>很多服务器会检查http访问的referer从而来控制访问。比如：你是先访问首页，然后再访问首页中的邮箱页面，这里访问邮箱的referer地址就是访问首页成功后的页面地址，如果服务器发现对邮箱页面访问的referer地址不是首页的地址，就断定那是个盗连了<br>curl中内置option：-e可以让我们设定referer</p>
+<h1 id="curl-e-“www-linux-com”-http-mail-linux-com"><a href="#curl-e-“www-linux-com”-http-mail-linux-com" class="headerlink" title="curl -e “www.linux.com” http://mail.linux.com"></a>curl -e “www.linux.com” <a href="http://mail.linux.com" target="_blank" rel="external">http://mail.linux.com</a></h1><p>这样就会让服务器其以为你是从www.linux.com点击某个链接过来的</p>
+<p>8、下载文件<br>8.1：利用curl下载文件。</p>
+<p>#使用内置option：-o(小写)</p>
+<h1 id="curl-o-dodo1-jpg-http-www-linux-com-dodo1-JPG"><a href="#curl-o-dodo1-jpg-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -o dodo1.jpg http:www.linux.com/dodo1.JPG"></a>curl -o dodo1.jpg http:www.linux.com/dodo1.JPG</h1><p>#使用内置option：-O（大写)</p>
+<h1 id="curl-O-http-www-linux-com-dodo1-JPG"><a href="#curl-O-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -O http://www.linux.com/dodo1.JPG"></a>curl -O <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><p>这样就会以服务器上的名称保存文件到本地</p>
+<p>8.2：循环下载<br>有时候下载图片可以能是前面的部分名称是一样的，就最后的尾椎名不一样</p>
+<h1 id="curl-O-http-www-linux-com-dodo-1-5-JPG"><a href="#curl-O-http-www-linux-com-dodo-1-5-JPG" class="headerlink" title="curl -O http://www.linux.com/dodo[1-5].JPG"></a>curl -O <a href="http://www.linux.com/dodo[1-5].JPG" target="_blank" rel="external">http://www.linux.com/dodo[1-5].JPG</a></h1><p>这样就会把dodo1，dodo2，dodo3，dodo4，dodo5全部保存下来</p>
+<p>8.3：下载重命名</p>
+<h1 id="curl-O-http-www-linux-com-hello-bb-dodo-1-5-JPG"><a href="#curl-O-http-www-linux-com-hello-bb-dodo-1-5-JPG" class="headerlink" title="curl -O http://www.linux.com/{hello,bb}/dodo[1-5].JPG"></a>curl -O <a href="http://www.linux.com/{hello,bb}/dodo[1-5].JPG" target="_blank" rel="external">http://www.linux.com/{hello,bb}/dodo[1-5].JPG</a></h1><p>由于下载的hello与bb中的文件名都是dodo1，dodo2，dodo3，dodo4，dodo5。因此第二次下载的会把第一次下载的覆盖，这样就需要对文件进行重命名。</p>
+<h1 id="curl-o-1-2-JPG-http-www-linux-com-hello-bb-dodo-1-5-JPG"><a href="#curl-o-1-2-JPG-http-www-linux-com-hello-bb-dodo-1-5-JPG" class="headerlink" title="curl -o #1_#2.JPG http://www.linux.com/{hello,bb}/dodo[1-5].JPG"></a>curl -o #1_#2.JPG <a href="http://www.linux.com/{hello,bb}/dodo[1-5].JPG" target="_blank" rel="external">http://www.linux.com/{hello,bb}/dodo[1-5].JPG</a></h1><p>这样在hello/dodo1.JPG的文件下载下来就会变成hello_dodo1.JPG,其他文件依此类推，从而有效的避免了文件被覆盖</p>
+<p>8.4：分块下载<br>有时候下载的东西会比较大，这个时候我们可以分段下载。使用内置option：-r</p>
+<h1 id="curl-r-0-100-o-dodo1-part1-JPG-http-www-linux-com-dodo1-JPG"><a href="#curl-r-0-100-o-dodo1-part1-JPG-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -r 0-100 -o dodo1_part1.JPG http://www.linux.com/dodo1.JPG"></a>curl -r 0-100 -o dodo1_part1.JPG <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><h1 id="curl-r-100-200-o-dodo1-part2-JPG-http-www-linux-com-dodo1-JPG"><a href="#curl-r-100-200-o-dodo1-part2-JPG-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -r 100-200 -o dodo1_part2.JPG http://www.linux.com/dodo1.JPG"></a>curl -r 100-200 -o dodo1_part2.JPG <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><h1 id="curl-r-200-o-dodo1-part3-JPG-http-www-linux-com-dodo1-JPG"><a href="#curl-r-200-o-dodo1-part3-JPG-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -r 200- -o dodo1_part3.JPG http://www.linux.com/dodo1.JPG"></a>curl -r 200- -o dodo1_part3.JPG <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><h1 id="cat-dodo1-part-gt-dodo1-JPG"><a href="#cat-dodo1-part-gt-dodo1-JPG" class="headerlink" title="cat dodo1_part* &gt; dodo1.JPG"></a>cat dodo1_part* &gt; dodo1.JPG</h1><p>这样就可以查看dodo1.JPG的内容了</p>
+<p>8.5：通过ftp下载文件<br>curl可以通过ftp下载文件，curl提供两种从ftp中下载的语法</p>
+<h1 id="curl-O-u-用户名-密码-ftp-www-linux-com-dodo1-JPG"><a href="#curl-O-u-用户名-密码-ftp-www-linux-com-dodo1-JPG" class="headerlink" title="curl -O -u 用户名:密码 ftp://www.linux.com/dodo1.JPG"></a>curl -O -u 用户名:密码 ftp://www.linux.com/dodo1.JPG</h1><h1 id="curl-O-ftp-用户名-密码-www-linux-com-dodo1-JPG"><a href="#curl-O-ftp-用户名-密码-www-linux-com-dodo1-JPG" class="headerlink" title="curl -O ftp://用户名:密码@www.linux.com/dodo1.JPG"></a>curl -O ftp://用户名:密码@www.linux.com/dodo1.JPG</h1><p>8.6：显示下载进度条</p>
+<h1 id="curl-O-http-www-linux-com-dodo1-JPG-1"><a href="#curl-O-http-www-linux-com-dodo1-JPG-1" class="headerlink" title="curl -# -O http://www.linux.com/dodo1.JPG"></a>curl -# -O <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><p>8.7：不会显示下载进度信息</p>
+<h1 id="curl-s-O-http-www-linux-com-dodo1-JPG"><a href="#curl-s-O-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -s -O http://www.linux.com/dodo1.JPG"></a>curl -s -O <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><p>9、断点续传<br>在windows中，我们可以使用迅雷这样的软件进行断点续传。curl可以通过内置option:-C同样可以达到相同的效果<br>如果在下载dodo1.JPG的过程中突然掉线了，可以使用以下的方式续传</p>
+<h1 id="curl-C-O-http-www-linux-com-dodo1-JPG"><a href="#curl-C-O-http-www-linux-com-dodo1-JPG" class="headerlink" title="curl -C -O http://www.linux.com/dodo1.JPG"></a>curl -C -O <a href="http://www.linux.com/dodo1.JPG" target="_blank" rel="external">http://www.linux.com/dodo1.JPG</a></h1><p>10、上传文件<br>curl不仅仅可以下载文件，还可以上传文件。通过内置option:-T来实现</p>
+<h1 id="curl-T-dodo1-JPG-u-用户名-密码-ftp-www-linux-com-img"><a href="#curl-T-dodo1-JPG-u-用户名-密码-ftp-www-linux-com-img" class="headerlink" title="curl -T dodo1.JPG -u 用户名:密码 ftp://www.linux.com/img/"></a>curl -T dodo1.JPG -u 用户名:密码 ftp://www.linux.com/img/</h1><p>这样就向ftp服务器上传了文件dodo1.JPG</p>
+<p>11、显示抓取错误</p>
+<h1 id="curl-f-http-www-linux-com-error"><a href="#curl-f-http-www-linux-com-error" class="headerlink" title="curl -f http://www.linux.com/error"></a>curl -f <a href="http://www.linux.com/error" target="_blank" rel="external">http://www.linux.com/error</a></h1><p>其他参数(此处翻译为转载)：</p>
+<p>复制代码<br>-a/–append                        上传文件时，附加到目标文件<br>–anyauth                            可以使用“任何”身份验证方法<br>–basic                                使用HTTP基本验证<br>-B/–use-ascii                      使用ASCII文本传输<br>-d/–data <data>                  HTTP POST方式传送数据<br>–data-ascii <data>            以ascii的方式post数据<br>–data-binary <data>          以二进制的方式post数据<br>–negotiate                          使用HTTP身份验证<br>–digest                        使用数字身份验证<br>–disable-eprt                  禁止使用EPRT或LPRT<br>–disable-epsv                  禁止使用EPSV<br>–egd-file <file>              为随机数据(SSL)设置EGD socket路径<br>–tcp-nodelay                  使用TCP_NODELAY选项<br>-E/–cert <cert[:passwd]>      客户端证书文件和密码 (SSL)<br>–cert-type <type>              证书文件类型 (DER/PEM/ENG) (SSL)<br>–key <key>                    私钥文件名 (SSL)<br>–key-type <type>              私钥文件类型 (DER/PEM/ENG) (SSL)<br>–pass  <pass>                  私钥密码 (SSL)<br>–engine <eng>                  加密引擎使用 (SSL). “–engine list” for list<br>–cacert <file>                CA证书 (SSL)<br>–capath <directory>            CA目   (made using c_rehash) to verify peer against (SSL)<br>–ciphers <list>                SSL密码<br>–compressed                    要求返回是压缩的形势 (using deflate or gzip)<br>–connect-timeout <seconds>    设置最大请求时间<br>–create-dirs                  建立本地目录的目录层次结构<br>–crlf                          上传是把LF转变成CRLF<br>–ftp-create-dirs              如果远程目录不存在，创建远程目录<br>–ftp-method [multicwd/nocwd/singlecwd]    控制CWD的使用<br>–ftp-pasv                      使用 PASV/EPSV 代替端口<br>–ftp-skip-pasv-ip              使用PASV的时候,忽略该IP地址<br>–ftp-ssl                      尝试用 SSL/TLS 来进行ftp数据传输<br>–ftp-ssl-reqd                  要求用 SSL/TLS 来进行ftp数据传输<br>-F/–form <name=content>        模拟http表单提交数据<br>-form-string <name=string>      模拟http表单提交数据<br>-g/–globoff                    禁用网址序列和范围使用{}和[]<br>-G/–get                        以get的方式来发送数据<br>-h/–help                      帮助<br>-H/–header <line></line>              自定义头信息传递给服务器<br>–ignore-content-length        忽略的HTTP头信息的长度<br>-i/–include                    输出时包括protocol头信息<br>-I/–head                      只显示文档信息<br>-j/–junk-session-cookies      读取文件时忽略session cookie<br>–interface <interface>        使用指定网络接口/地址<br>–krb4 <level>                  使用指定安全级别的krb4<br>-k/–insecure                  允许不使用证书到SSL站点<br>-K/–config                    指定的配置文件读取<br>-l/–list-only                  列出ftp目录下的文件名称<br>–limit-rate <rate>            设置传输速度<br>–local-port<num>              强制使用本地端口号<br>-m/–max-time <seconds>        设置最大传输时间<br>–max-redirs <num>              设置最大读取的目录数<br>–max-filesize <bytes>          设置最大下载的文件总量<br>-M/–manual                    显示全手动<br>-n/–netrc                      从netrc文件中读取用户名和密码<br>–netrc-optional                使用 .netrc 或者 URL来覆盖-n<br>–ntlm                          使用 HTTP NTLM 身份验证<br>-N/–no-buffer                  禁用缓冲输出<br>-p/–proxytunnel                使用HTTP代理<br>–proxy-anyauth                选择任一代理身份验证方法<br>–proxy-basic                  在代理上使用基本身份验证<br>–proxy-digest                  在代理上使用数字身份验证<br>–proxy-ntlm                    在代理上使用ntlm身份验证<br>-P/–ftp-port <address>        使用端口地址，而不是使用PASV<br>-Q/–quote <cmd>                文件传输前，发送命令到服务器<br>–range-file                    读取（SSL）的随机文件<br>-R/–remote-time                在本地生成文件时，保留远程文件时间<br>–retry <num>                  传输出现问题时，重试的次数<br>–retry-delay <seconds>        传输出现问题时，设置重试间隔时间<br>–retry-max-time <seconds>      传输出现问题时，设置最大重试时间<br>-S/–show-error                显示错误<br>–socks4 <host[:port]>          用socks4代理给定主机和端口<br>–socks5 <host[:port]>          用socks5代理给定主机和端口<br>-t/–telnet-option <opt=val>    Telnet选项设置<br>–trace <file>                  对指定文件进行debug<br>–trace-ascii <file>            Like –跟踪但没有hex输出<br>–trace-time                    跟踪/详细输出时，添加时间戳<br>–url <url>                    Spet URL to work with<br>-U/–proxy-user <user[:password]>  设置代理用户名和密码<br>-V/–version                    显示版本信息<br>-X/–request <command>          指定什么命令<br>-y/–speed-time                放弃限速所要的时间。默认为30<br>-Y/–speed-limit                停止传输速度的限制，速度时间’秒<br>-z/–time-cond                  传送时间设置<br>-0/–http1.0                    使用HTTP 1.0<br>-1/–tlsv1                      使用TLSv1（SSL）<br>-2/–sslv2                      使用SSLv2的（SSL）<br>-3/–sslv3                      使用的SSLv3（SSL）<br>–3p-quote                      like -Q for the source URL for 3rd party transfer<br>–3p-url                        使用url，进行第三方传送<br>–3p-user                      使用用户名和密码，进行第三方传送<br>-4/–ipv4                      使用IP4<br>-6/–ipv6                      使用IP6<br>复制代码<br>转自：<a href="http://www.linuxdiyf.com/linux/2800.html" target="_blank" rel="external">http://www.linuxdiyf.com/linux/2800.html</a></user[:password]></url></file></file></opt=val></host[:port]></host[:port]></seconds></seconds></num></cmd></address></bytes></num></seconds></num></rate></level></interface></name=string></name=content></seconds></list></directory></file></eng></pass></type></key></type></cert[:passwd]></file></data></data></data></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yukll.github.io/puxu.github.io/2017/10/13/每天一个linux命令之curl/" data-id="cj8pc48zg00063gl6rjjxjnsq" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/puxu.github.io/2017/10/13/Mysql无法远程连接的解决办法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Mysql无法远程连接的解决办法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/puxu.github.io/categories/日志/">日志</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/puxu.github.io/categories/日志/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/puxu.github.io/categories/日志/mysql/">mysql</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li><li class="tag-list-item"><a class="tag-list-link" href="/puxu.github.io/tags/mysql/">mysql</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/puxu.github.io/tags/linux/" style="font-size: 20px;">linux</a> <a href="/puxu.github.io/tags/mysql/" style="font-size: 10px;">mysql</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/puxu.github.io/archives/2017/10/">十月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/13/每天一个linux命令之curl/">每天一个linux命令之curl</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/13/Mysql无法远程连接的解决办法/">Mysql无法远程连接的解决办法</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/">redhat6.5安装Mysql详细过程</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/">每天一个Linux命令之lldp</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/">每天一个linux命令之insmod</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xls<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/puxu.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/puxu.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/puxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/puxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/puxu.github.io/js/script.js"></script>
+
+  </div>
+</body>
+</html>
