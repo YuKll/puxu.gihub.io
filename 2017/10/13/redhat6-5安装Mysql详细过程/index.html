@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Xu的博客</title>
+  <title>redhat6.5安装Mysql详细过程 | Xu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每天成长一点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xu的博客">
-<meta property="og:url" content="https://yukll.github.io/puxu.github.io/index.html">
+  <meta name="description" content="摘要：insmode">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redhat6.5安装Mysql详细过程">
+<meta property="og:url" content="https://yukll.github.io/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/index.html">
 <meta property="og:site_name" content="Xu的博客">
-<meta property="og:description" content="每天成长一点">
+<meta property="og:description" content="摘要：insmode">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-13T02:31:05.782Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xu的博客">
-<meta name="twitter:description" content="每天成长一点">
+<meta name="twitter:title" content="redhat6.5安装Mysql详细过程">
+<meta name="twitter:description" content="摘要：insmode">
   
     <link rel="alternate" href="/atom.xml" title="Xu的博客" type="application/atom+xml">
   
@@ -67,9 +69,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-redhat6-5安装Mysql详细过程" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-redhat6-5安装Mysql详细过程" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/" class="article-date">
   <time datetime="2017-10-13T02:26:58.000Z" itemprop="datePublished">2017-10-13</time>
@@ -86,8 +86,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/">redhat6.5安装Mysql详细过程</a>
+    <h1 class="article-title" itemprop="name">
+      redhat6.5安装Mysql详细过程
     </h1>
   
 
@@ -95,12 +95,70 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>摘要：insmode<br>
-        
-          <p class="article-more-link">
-            <a href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/#more">Read More</a>
-          </p>
-        
+        <p>摘要：insmode<br><a id="more"></a><br>正文:     mysql5.6的安装，mysql各个版本安装方法都差不多，只是有细微差别</p>
+<p>RPM方式安装MySQL5.6<br>a. 检查MySQL及相关RPM包，是否安装，如果有安装，则移除（rpm –e 名称）<br>1 [root@localhost ~]# rpm -qa | grep -i mysql</p>
+<p>2 mysql-libs-5.1.66-2.el6_3.x86_64</p>
+<p>3 [root@localhost ~]# yum -y remove mysql-libs* （这步是如果yum安装过mysql就先卸载）</p>
+<p>b. 下载Linux对应的RPM包，如：CentOS6.4_64对应的RPM包，如下：<br>1 [root@localhost rpm]# ll</p>
+<p> total 74364</p>
+<p> -rw-r–r–. 1 root root 18442536 Dec 11 20:19 MySQL-client-5.6.15-1.el6.x86_64.rpm</p>
+<p> -rw-r–r–. 1 root root  3340660 Dec 11 20:06 MySQL-devel-5.6.15-1.el6.x86_64.rpm</p>
+<p> -rw-r–r–. 1 root root 54360600 Dec 11 20:03 MySQL-server-5.6.15-1.el6.x86_64.rpm</p>
+<p>c. 安装mysql<br>1 [root@localhost rpm]# rpm -ivh MySQL-server-5.6.15-1.el6.x86_64.rpm</p>
+<p>2 [root@localhost rpm]# rpm -ivh MySQL-devel-5.6.15-1.el6.x86_64.rpm</p>
+<p>3 [root@localhost rpm]# rpm -ivh MySQL-client-5.6.15-1.el6.x86_64.rpm</p>
+<p>4 #修改配置文件位置</p>
+<p>5 [root@localhost rpm]# cp /usr/share/mysql/my-default.cnf /etc/my.cnf</p>
+<p>d. 初始化MySQL及设置密码<br>1 [root@localhost rpm]# /usr/bin/mysql_install_db</p>
+<p>2 [root@localhost rpm]# service mysql start</p>
+<p>3 [root@localhost rpm]# cat /root/.mysql_secret  #查看root账号密码</p>
+<p>4 # The random password set for the root user at Wed Dec 11 23:32:50 2013 (local time): qKTaFZnl</p>
+<p>5 [root@localhost ~]# mysql -uroot –pqKTaFZnl</p>
+<p>6 mysql&gt; SET PASSWORD = PASSWORD(‘123456’);    #设置密码为123456</p>
+<p>7 mysql&gt; exit</p>
+<p>8 [root@localhost ~]# mysql -uroot -p123456</p>
+<p>e. 允许远程登陆<br>01 mysql&gt; use mysql;</p>
+<p>02 mysql&gt; select host,user,password from user;</p>
+<p>03 +———————–+——+——————————————-+</p>
+<p>04 | host                  | user | password                                  |</p>
+<p>05 +———————–+——+——————————————-+</p>
+<p>06 | localhost             | root | *6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9 |</p>
+<p>07 | localhost.localdomain | root | *1237E2CE819C427B0D8174456DD83C47480D37E8 |</p>
+<p>08 | 127.0.0.1             | root | *1237E2CE819C427B0D8174456DD83C47480D37E8 |</p>
+<p>09 | ::1                   | root | *1237E2CE819C427B0D8174456DD83C47480D37E8 |</p>
+<p>10 +———————–+——+——————————————-+</p>
+<p>11  </p>
+<p>12 mysql&gt; update user set password=password(‘123456’) where user=’root’;</p>
+<p>13 mysql&gt; update user set host=’%’ where user=’root’ and host=’localhost’;</p>
+<p>14 mysql&gt; flush privileges;</p>
+<p>15 mysql&gt; exit</p>
+<p>f. 设置开机自启动<br>1 [root@localhost ~]# chkconfig mysql on</p>
+<p>2 [root@localhost ~]# chkconfig –list | grep mysql</p>
+<p>3 mysql           0:off   1:off   2:on    3:on    4:on    5:on    6:off</p>
+<p>g. MySQL的默认安装位置<br>1 /var/lib/mysql/               #数据库目录</p>
+<p>2 /usr/share/mysql              #配置文件目录</p>
+<p>3 /usr/bin                     #相关命令目录</p>
+<p>4 /etc/init.d/mysql              #启动脚本</p>
+<p>修改字符集和数据存储路径<br>配置/etc/my.cnf文件,修改数据存放路径、mysql.sock路径以及默认编码utf-8.<br>[html] view plain copy</p>
+<ol>
+<li>[client]  </li>
+<li>password        = 123456  </li>
+<li>port            = 3306  </li>
+<li>default-character-set=utf8  </li>
+<li>[mysqld]  </li>
+<li>port            = 3306  </li>
+<li>character_set_server=utf8  </li>
+<li>character_set_client=utf8  </li>
+<li>collation-server=utf8_general_ci  </li>
+<li>#(注意linux下mysql安装完后是默认：表名区分大小写，列名不区分大小写； 0：区分大小写，1：不区分大小写)  </li>
+<li>lower_case_table_names=1  </li>
+<li>#(设置最大连接数，默认为 151，MySQL服务器允许的最大连接数16384; )  </li>
+<li>max_connections=1000  </li>
+<li>[mysql]  </li>
+<li>default-character-set = utf8  </li>
+</ol>
+<p>查看字符集<br>show variables like ‘%collation%’;    rpm -ev MySQL-client-5.6.27-1.el6 –nodeps（删除mysql）<br>show variables like ‘%char%’;</p>
+
       
     </div>
     <footer class="article-footer">
@@ -112,104 +170,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-每天一个Linux命令之lldp" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" class="article-date">
-  <time datetime="2017-10-13T02:08:38.000Z" itemprop="datePublished">2017-10-13</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/puxu.github.io/categories/日志/">日志</a>►<a class="article-category-link" href="/puxu.github.io/categories/日志/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/">每天一个Linux命令之lldp</a>
-    </h1>
+    <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">每天一个Linux命令之lldp</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要：lldp<br>
-        
-          <p class="article-more-link">
-            <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yukll.github.io/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" data-id="cj8pa1cle00004wl6g2u3vygt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
-
-
-  
-    <article id="post-每天一个linux命令之insmod" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/" class="article-date">
-  <time datetime="2017-10-12T12:24:05.000Z" itemprop="datePublished">2017-10-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/puxu.github.io/categories/日志/">日志</a>►<a class="article-category-link" href="/puxu.github.io/categories/日志/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/">每天一个linux命令之insmod</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要：insmode<br>
-        
-          <p class="article-more-link">
-            <a href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yukll.github.io/puxu.github.io/2017/10/12/每天一个linux命令之insmod/" data-id="cj8pa1clr00044wl61tetyny8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
 
 </section>
         

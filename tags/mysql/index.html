@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>每天一个linux命令之insmod | Xu的博客</title>
+  <title>Tag: mysql | Xu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="摘要：insmode">
-<meta name="keywords" content="linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="每天一个linux命令之insmod">
-<meta property="og:url" content="https://yukll.github.io/puxu.github.io/2017/10/12/每天一个linux命令之insmod/index.html">
+  <meta name="description" content="每天成长一点">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Xu的博客">
+<meta property="og:url" content="https://yukll.github.io/puxu.github.io/tags/mysql/index.html">
 <meta property="og:site_name" content="Xu的博客">
-<meta property="og:description" content="摘要：insmode">
+<meta property="og:description" content="每天成长一点">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-13T02:14:29.557Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="每天一个linux命令之insmod">
-<meta name="twitter:description" content="摘要：insmode">
+<meta name="twitter:title" content="Xu的博客">
+<meta name="twitter:description" content="每天成长一点">
   
     <link rel="alternate" href="/atom.xml" title="Xu的博客" type="application/atom+xml">
   
@@ -69,76 +67,39 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-每天一个linux命令之insmod" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/" class="article-date">
-  <time datetime="2017-10-12T12:24:05.000Z" itemprop="datePublished">2017-10-12</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/puxu.github.io/categories/日志/">日志</a>►<a class="article-category-link" href="/puxu.github.io/categories/日志/linux/">linux</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+        <section id="main">
   
-    <h1 class="article-title" itemprop="name">
-      每天一个linux命令之insmod
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/puxu.github.io/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      <a href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/" class="archive-article-date">
+  <time datetime="2017-10-13T02:26:58.000Z" itemprop="datePublished">10月 13</time>
+</a>
+      
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/">redhat6.5安装Mysql详细过程</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>摘要：insmode<br><a id="more"></a><br>正文:      insmod命令用于将给定的模块加载到内核中。<br>    Linux有许多功能是通过模块的方式，在需要时才载入kernel。如此可使kernel较为精简，进而提高效率，以及保有较大的弹性。这类可载入的模块，通常是设备驱动程序。 </p>
-<pre><code>语法 insmod(选项)(参数) 选项 
--f：不检查目前kernel版本与模块编译时的kernel版本是否一致，强制将模块载入；
--k：将模块设置为自动卸除； 
--m：输出模块的载入信息； -o&lt;模块名称&gt;：指定模块的名称，可使用模块文件的文件名；
--p：测试模块是否能正确地载入kernel；
--s：将所有信息记录在系统记录文件中； 
--v：执行时显详细的信息； 
--x：不要汇出模块的外部符号； 
--X：汇出模块所有的外部符号，此为预设置。
-参数 内核模块：指定要加载的内核模块文件。 
-实例 加载RAID1阵列级别模块，如下所示：
-[root@localhost boot]# insmod /lib/modules/2.6. 18-8.el5/kernel/drivers/md/raid1.ko
-[root@localhost boot]# lsmod | grep raid1 raid1 25153 0 
-从以上显示结果可知，RAID1模块已加载成功。只是在使用insmod命令加载模块时，需要使用绝对路径方能加载，且加载时无法自动解决依赖关系。
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://yukll.github.io/puxu.github.io/2017/10/12/每天一个linux命令之insmod/" data-id="cj8pa1clr00044wl61tetyny8" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li></ul>
-
-    </footer>
+    </header>
   </div>
-  
-    
-<nav id="article-nav">
-  
-    <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          每天一个Linux命令之lldp
-        
-      </div>
-    </a>
-  
-  
-</nav>
-
-  
 </article>
+  
+  
+    </div></section>
+  
 
 </section>
         
