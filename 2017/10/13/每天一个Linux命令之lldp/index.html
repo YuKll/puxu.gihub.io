@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>每天一个Linux命令之lldp | Xu的博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="摘要：lldp">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="每天一个Linux命令之lldp">
+<meta property="og:url" content="https://yukll.github.io/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/index.html">
+<meta property="og:site_name" content="Xu的博客">
+<meta property="og:description" content="摘要：lldp">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-13T02:10:45.517Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="每天一个Linux命令之lldp">
+<meta name="twitter:description" content="摘要：lldp">
+  
+    <link rel="alternate" href="/atom.xml" title="Xu的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/puxu.github.io/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/puxu.github.io/" id="logo">Xu的博客</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/puxu.github.io/" id="subtitle">fly the sky</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/puxu.github.io/">Home</a>
+        
+          <a class="main-nav-link" href="/puxu.github.io/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://yukll.github.io/puxu.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-每天一个Linux命令之lldp" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" class="article-date">
+  <time datetime="2017-10-13T02:08:38.000Z" itemprop="datePublished">2017-10-13</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/puxu.github.io/categories/日志/">日志</a>►<a class="article-category-link" href="/puxu.github.io/categories/日志/linux/">linux</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      每天一个Linux命令之lldp
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>摘要：lldp<br><a id="more"></a><br>正文: LLDP For Linux 命令  </p>
+<p>LLDP协议介绍:<br>简单说来，LLDP是一种邻近发现协议。它为以太网网络设备，如交换机、路由器和无线局域网接入点定义了一种标准的方法，使其可以向网络中其他节点公告自身的存在，并保存各个邻近设备的发现信息。例如设备配置和设备识别等详细信息都可以用该协议进行公告。<br>具体来说，LLDP定义了一个通用公告信息集、一个传输公告的协议和一种用来存储所收到的公告信息的方法。要公告自身信息的设备可以将多条公告信息放在一个局域网数据包内传输，传输的形式为类型长度值（TLV）域。<br>LLDP应用<br>    服务器上安装lldp之后可以通过lldp确定服务器所连接交换机端口，并且交换机也可以通过lldp确认端口所连接的服务器。<br>    且在服务器交换机连线较复杂时能很快定位服务器及交换机的连接关系！<br>如下图：</p>
+<p>lldptool -t -n -i eth0 -V portDesc;lldptool -t -n -i eth1 -V portDesc</p>
+<p>Chassis ID TLV<br>        MAC: f4:b5:2f:5b:f7:80<br>Port ID TLV<br>        Local: 595<br>Time to Live TLV<br>        120<br>System Name TLV<br>        221.180.146.2.SW.CDN<br>System Description TLV<br>        Juniper Networks, Inc. ex3200-48t , version 12.3R5.7 Build date: 2013-12-18 03:01:12 UTC<br>System Capabilities TLV<br>        System capabilities:  Bridge, Router<br>        Enabled capabilities: Bridge, Router<br>Port Description TLV<br>        ge-0/0/32.0<br>MAC/PHY Configuration Status TLV<br>        Auto-negotiation supported and enabled<br>        PMD auto-negotiation capabilities: 0x0001<br>        MAU type: Unknown [0x0000]<br>Link Aggregation TLV<br>        Aggregation capable<br>        Currently aggregated<br>        Aggregated Port ID: 632<br>Maximum Frame Size TLV<br>        1514<br>Port VLAN ID TLV<br>        PVID: 1<br>Unidentified Org Specific TLV<br>        OUI: 0x009069, Subtype: 1, Info: 424b30323134303233343631<br>VLAN Name TLV<br>        VID 1: Name vlan1<br>LLDP-MED Capabilities TLV<br>        Device Type:  netcon<br>        Capabilities: LLDP-MED, Network Policy, Location Identification, Extended Power via MDI-PSE</p>
+<p>安装所需软件包及依赖关系<br><a href="http://rpm.pbone.net/index.php3/stat/4/idpl/25009532/dir/centos_6/com/lldpad-libs-0.9.46-2.el6.x86_64.rpm.html" target="_blank" rel="external">http://rpm.pbone.net/index.php3/stat/4/idpl/25009532/dir/centos_6/com/lldpad-libs-0.9.46-2.el6.x86_64.rpm.html</a><br>如果是公司服务器初始化完之后只需安装如下软件包即可：<br>libconfig-1.3.2-1.1.el6.x86_64.rpm<br>lldpad-0.9.46-3.el6_5.x86_64.rpm<br>lldpad-libs-0.9.46-3.el6_5.x86_64.rpm<br>守护进程及配置<br>1、首先确保交换机上已经启用lldp协议。<br>2、待安装完软件之后默认配置文件是没有的，当启动lldp守护进程时自动生成。</p>
+<h1 id="lldpad-–d-或-etc-init-d-lldpad-start"><a href="#lldpad-–d-或-etc-init-d-lldpad-start" class="headerlink" title="lldpad –d    或 /etc/init.d/lldpad start"></a>lldpad –d    或 /etc/init.d/lldpad start</h1><p>默认的配置文件存放路径：/var/lib/lldpad/lldpad.conf</p>
+<p>####注释：</p>
+<p>#####################################################################################<br>并且通过测试：发现里面的MAC地址信息是可以自动更新的！且配置不变。所以可以通过第一次配置之后把配置文件导出来，然后装完lldp之后可以把配置文件批量部署到服务器上。<br><strong>*</strong>em1 和 em2 的时候配置文件是否会更新？？？？ （问题）<br>测试结果：不行，网卡名称不能自动更新！</p>
+<p>#####################################################################################<br>第一次配置<br>1、首先确保软件包已经安装完成<br>2、确保守护进程起来之后，编写一个shell脚本把下面的脚本复制执行。<br>for i in <code>ls /sys/class/net/ | grep e</code> ;<br>      do echo “enabling lldp for interface: $i” ;<br>      lldptool set-lldp -i $i adminStatus=rxtx  ;<br>      lldptool -T -i $i -V  sysName enableTx=yes;<br>      lldptool -T -i $i -V  portDesc enableTx=yes ;<br>      lldptool -T -i $i -V  sysDesc enableTx=yes;<br>done<br>结果如下：<br>enabling lldp for interface: bonding_masters<br>adminStatus = rxtx<br>enableTx = yes<br>enableTx = yes<br>enableTx = yes<br>enabling lldp for interface: eth0<br>adminStatus = rxtx<br>enableTx = yes<br>enableTx = yes<br>enableTx = yes<br>enabling lldp for interface: eth1<br>adminStatus = rxtx<br>enableTx = yes<br>enableTx = yes<br>enableTx = yes<br>enabling lldp for interface: eth2<br>adminStatus = rxtx<br>enableTx = yes<br>enableTx = yes<br>enableTx = yes<br>enabling lldp for interface: eth3<br>adminStatus = rxtx<br>enableTx = yes<br>enableTx = yes<br>enableTx = yes</p>
+<p>3、以上操作完成之后即可查看连接信息</p>
+<p>命令详解<br>lldptool set-lldp -i $i adminStatus=rxtx   【配置LLDP模式】<br>TxRx：既发送也接收LLDP报文。<br>Tx：只发送不接收LLDP报文。<br>Rx：只接收不发送LLDP报文。<br>Disable：既不发送也不接收LLDP报文。<br>lldptool -T -i $i -V  sysName enableTx=yes; 【启用系统名称标识符】<br>lldptool -T -i $i -V  portDesc enableTx=yes ; 【启用端口描述标识符】<br>lldptool -T -i $i -V  sysDesc enableTx=yes;  【启用系统描述标识符】<br>TLV：（Type/Length/Value）<br>portDesc     : Port Description TLV<br>sysName      : System Name TLV<br>sysDesc      : System Description TLV<br>常用命令汇总<br>查看端口所连接详细信息：lldptool -t -n -i eth1<br>]$ lldptool -t -n -i eth1<br>Chassis ID TLV<br>        MAC: f4:b5:2f:5b:f7:80<br>Port ID TLV<br>        Local: 598<br>Time to Live TLV<br>        120<br>System Name TLV<br>        221.180.146.2.SW.CDN<br>System Description TLV<br>        Juniper Networks, Inc. ex3200-48t , version 12.3R5.7 Build date: 2013-12-18 03:01:12 UTC<br>System Capabilities TLV<br>        System capabilities:  Bridge, Router<br>        Enabled capabilities: Bridge, Router<br>Port Description TLV<br>        ge-0/0/33.0<br>MAC/PHY Configuration Status TLV<br>        Auto-negotiation supported and enabled<br>        PMD auto-negotiation capabilities: 0x0001<br>        MAU type: Unknown [0x0000]<br>Link Aggregation TLV<br>        Aggregation capable<br>        Currently aggregated<br>        Aggregated Port ID: 632<br>Maximum Frame Size TLV<br>        1514<br>Port VLAN ID TLV<br>        PVID: 1<br>Unidentified Org Specific TLV<br>        OUI: 0x009069, Subtype: 1, Info: 424b30323134303233343631<br>VLAN Name TLV<br>        VID 1: Name vlan1<br>LLDP-MED Capabilities TLV<br>        Device Type:  netcon<br>        Capabilities: LLDP-MED, Network Policy, Location Identification, Extended Power via MDI-PSE<br>End of LLDPDU TLV</p>
+<p>仅查看端口信息：lldptool -t -n -i eth1 -V portDesc</p>
+<p>$ lldptool -t -n -i eth1 -V portDesc<br>Port Description TLV<br>        ge-0/0/33.0   </p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yukll.github.io/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" data-id="cj8p9axk50000mkl6lxj75gxv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/puxu.github.io/2017/10/12/每天一个linux命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">每天一个linux命令之insmod</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/puxu.github.io/categories/日志/">日志</a><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/puxu.github.io/categories/日志/linux/">linux</a></li><li class="category-list-item"><a class="category-list-link" href="/puxu.github.io/categories/日志/二级目录/">二级目录</a></li></ul></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/puxu.github.io/tags/hello/">hello</a></li><li class="tag-list-item"><a class="tag-list-link" href="/puxu.github.io/tags/linux/">linux</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/puxu.github.io/tags/hello/" style="font-size: 10px;">hello</a> <a href="/puxu.github.io/tags/linux/" style="font-size: 20px;">linux</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/puxu.github.io/archives/2017/10/">十月 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/">每天一个Linux命令之lldp</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/12/每天一个linux命令/">每天一个linux命令之insmod</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/">每天一个linux命令之insmod</a>
+          </li>
+        
+          <li>
+            <a href="/puxu.github.io/2017/10/12/hello/">hello</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 xls<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/puxu.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/puxu.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/puxu.github.io/fancybox/jquery.fancybox.css">
+  <script src="/puxu.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/puxu.github.io/js/script.js"></script>
+
+  </div>
+</body>
+</html>
