@@ -3,18 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Tag: linux | Xu的博客</title>
+  <title>Mysql无法远程连接的解决办法 | Xu的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="每天成长一点">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Xu的博客">
-<meta property="og:url" content="https://yukll.github.io/puxu.github.io/tags/linux/index.html">
+  <meta name="description" content="摘要：mysql无法远程连接">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql无法远程连接的解决办法">
+<meta property="og:url" content="https://yukll.github.io/puxu.github.io/2017/10/13/Mysql无法远程连接的解决办法/index.html">
 <meta property="og:site_name" content="Xu的博客">
-<meta property="og:description" content="每天成长一点">
+<meta property="og:description" content="摘要：mysql无法远程连接">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-13T02:47:46.249Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Xu的博客">
-<meta name="twitter:description" content="每天成长一点">
+<meta name="twitter:title" content="Mysql无法远程连接的解决办法">
+<meta name="twitter:description" content="摘要：mysql无法远程连接">
   
     <link rel="alternate" href="/atom.xml" title="Xu的博客" type="application/atom+xml">
   
@@ -67,58 +69,65 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/puxu.github.io/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/" class="archive-article-date">
-  <time datetime="2017-10-13T02:08:38.000Z" itemprop="datePublished">10月 13</time>
+        <section id="main"><article id="post-Mysql无法远程连接的解决办法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/puxu.github.io/2017/10/13/Mysql无法远程连接的解决办法/" class="article-date">
+  <time datetime="2017-10-13T02:42:53.000Z" itemprop="datePublished">2017-10-13</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/puxu.github.io/categories/日志/">日志</a>►<a class="article-category-link" href="/puxu.github.io/categories/日志/mysql/">mysql</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/puxu.github.io/2017/10/13/每天一个Linux命令之lldp/">每天一个Linux命令之lldp</a>
+    <h1 class="article-title" itemprop="name">
+      Mysql无法远程连接的解决办法
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/" class="archive-article-date">
-  <time datetime="2017-10-12T12:24:05.000Z" itemprop="datePublished">10月 12</time>
-</a>
+    <div class="article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/puxu.github.io/2017/10/12/每天一个linux命令之insmod/">每天一个linux命令之insmod</a>
-    </h1>
-  
+        <p>摘要：mysql无法远程连接<br><a id="more"></a><br>正文:        　　远程登陆数据库的时候出现了下面出错信息:<br>　　ERROR 2003 (HY000): Can’t connect to MySQL server on ‘xxx.xxx.xxx.xxx’,<br>　　关于MySql数据库无法远程连接的问题可以归结为以下几点:<br>　　1). 没有授予相应的权限:<br>　　例如，你想root使用123456从任何主机连接到mysql服务器。<br>    mysql&gt;GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root’@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION;</p>
+<p>　　如果你想允许用户jack从ip为10.10.50.127的主机连接到mysql服务器，并使用654321作为密码<br>    mysql&gt;GRANT ALL PRIVILEGES ON <em>.</em> TO ‘jack’@’10.10.50.127’ IDENTIFIED BY ‘654321’ WITH GRANT OPTION;mysql&gt;FLUSH RIVILEGES</p>
+<p>　　2). 修改mysql数据库中的user表使相应的用户能从某一主机登陆　　<br>    mysql -u root –pmysql&gt;use mysql;mysql&gt;update user set host = ‘%’ where user = ‘root’;mysql&gt;select host, user from user;</p>
+<p>　　3). 防火墙禁止了3306端口，以iptable为例　　　　<br>    vi /etc/sysconfig/iptables  增加下面一行：  -A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 3306-j ACCEPT<br>    service iptables restart  </p>
+<pre><code>ps: iptables设置  
+1) 重启后生效   开启： chkconfig iptables on   关闭： chkconfig iptables off   
+2) 即时生效，重启后失效   开启： service iptables start   关闭： service iptables stop
+</code></pre><p>　　3). 修改MySQL的配置文件/etc/mysql/my.cnf，因为默认3306端口只允许本地访问的，注释掉这行<br>　　　　#bind-address = 127.0.0.1<br>　　然后重启Mysql，/etc/init.d/mysql restart</p>
 
-    </header>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://yukll.github.io/puxu.github.io/2017/10/13/Mysql无法远程连接的解决办法/" data-id="cj8pamhp00001msl6vcba0poo" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/puxu.github.io/tags/mysql/">mysql</a></li></ul>
+
+    </footer>
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/puxu.github.io/2017/10/13/redhat6-5安装Mysql详细过程/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">redhat6.5安装Mysql详细过程</div>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-  
-    </div></section>
-  
 
 </section>
         
