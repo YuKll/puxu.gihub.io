@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Xu的博客">
 <meta property="og:description" content="摘要：mysql无法远程连接">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2017-10-13T02:47:46.249Z">
+<meta property="og:updated_time" content="2017-10-13T02:49:30.269Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Mysql无法远程连接的解决办法">
 <meta name="twitter:description" content="摘要：mysql无法远程连接">
@@ -97,7 +97,7 @@
       
         <p>摘要：mysql无法远程连接<br><a id="more"></a><br>正文:        　　远程登陆数据库的时候出现了下面出错信息:<br>　　ERROR 2003 (HY000): Can’t connect to MySQL server on ‘xxx.xxx.xxx.xxx’,<br>　　关于MySql数据库无法远程连接的问题可以归结为以下几点:<br>　　1). 没有授予相应的权限:<br>　　例如，你想root使用123456从任何主机连接到mysql服务器。<br>    mysql&gt;GRANT ALL PRIVILEGES ON <em>.</em> TO ‘root’@’%’ IDENTIFIED BY ‘123456’ WITH GRANT OPTION;</p>
 <p>　　如果你想允许用户jack从ip为10.10.50.127的主机连接到mysql服务器，并使用654321作为密码<br>    mysql&gt;GRANT ALL PRIVILEGES ON <em>.</em> TO ‘jack’@’10.10.50.127’ IDENTIFIED BY ‘654321’ WITH GRANT OPTION;mysql&gt;FLUSH RIVILEGES</p>
-<p>　　2). 修改mysql数据库中的user表使相应的用户能从某一主机登陆　　<br>    mysql -u root –pmysql&gt;use mysql;mysql&gt;update user set host = ‘%’ where user = ‘root’;mysql&gt;select host, user from user;</p>
+<p>　　2). 修改mysql数据库中的user表使相应的用户能从某一主机登陆　　<br>    mysql -u root –pmysql&gt;use mysql;<br>    mysql&gt;update user set host = ‘%’ where user = ‘root’;<br>    mysql&gt;select host, user from user;</p>
 <p>　　3). 防火墙禁止了3306端口，以iptable为例　　　　<br>    vi /etc/sysconfig/iptables  增加下面一行：  -A RH-Firewall-1-INPUT -m state –state NEW -m tcp -p tcp –dport 3306-j ACCEPT<br>    service iptables restart  </p>
 <pre><code>ps: iptables设置  
 1) 重启后生效   开启： chkconfig iptables on   关闭： chkconfig iptables off   
